@@ -20,7 +20,7 @@ runs:
       with:
         version: nightly
 
-    - if: ${{ inputs.with-forge-tests }} == true
+    - if: inputs.with-forge-tests == true
       name: "Installing foundry"
       uses: foundry-rs/foundry-toolchain@v1
       with:
@@ -29,7 +29,7 @@ runs:
     - run: 'echo "${{ github.action_path }}" >> $GITHUB_PATH'
       shell: bash
 
-    - if: ${{ inputs.with-forge-tests }} == true
+    - if: inputs.with-forge-tests == true
       name: "Running Forge tests"
       run: "forge test -vvv"
       shell: bash
