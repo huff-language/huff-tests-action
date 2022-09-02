@@ -9,5 +9,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: Huff tests
-      shell: hufftests.sh ${{ inputs.test-extension }}
+    - run: hufftests.sh ${{ inputs.test-extension }}
+      shell: bash
