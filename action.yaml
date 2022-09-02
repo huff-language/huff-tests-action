@@ -14,6 +14,8 @@ runs:
     - uses: huff-language/huff-toolchain@v2
       with:
         version: nightly
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
     - run: "hufftests.sh ${{ inputs.test-extension }}"
       shell: bash
   using: composite
