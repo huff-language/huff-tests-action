@@ -1,18 +1,18 @@
-name: "Huff Tests"
+---
 description: "Run all Huff test files in the repository"
 inputs:
   test-extension:
+    default: .t.huff
     description: "The File extension of your Huff test files"
     required: false
-    default: ".t.huff"
-
+name: "Huff Tests"
 runs:
-  using: "composite"
   steps:
     - uses: actions/checkout@v3
-        with:
-          submodules: recursive
+      with:
+        submodules: recursive
     - uses: huff-language/huff-toolchain@v2
       with:
         version: nightly
-    - run: bash hufftests.sh ${{ inputs.test-extension }}
+    - run: "bash hufftests.sh ${{ inputs.test-extension }}"
+  using: composite
