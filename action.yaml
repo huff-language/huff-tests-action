@@ -16,6 +16,6 @@ runs:
         version: nightly
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: "hufftests.sh ${{ inputs.test-extension }}"
+    - run: "bash hufftests.sh ${{ inputs.test-extension }}"
       shell: bash
   using: composite
