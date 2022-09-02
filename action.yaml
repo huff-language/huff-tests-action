@@ -9,12 +9,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v3
-        with:
-          submodules: recursive
-    - name: Install Huff
-      uses: huff-language/huff-toolchain@v2
-      with:
-        version: nightly
     - run: Huff tests
       shell: hufftests.sh ${{ inputs.test-extension }}
