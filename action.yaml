@@ -14,5 +14,6 @@ runs:
     - uses: huff-language/huff-toolchain@v2
       with:
         version: nightly
-    - run: "bash hufftests.sh ${{ inputs.test-extension }}"
+    - run: "hufftests.sh ${{ inputs.test-extension }}"
+      shell: bash
   using: composite
