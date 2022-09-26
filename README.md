@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Huff Tests
-        uses: cheethas/huff-tests-action@v2
+        uses: huff-language/huff-tests-action@v2
         with:
           # Optional
           with-forge-tests: false
