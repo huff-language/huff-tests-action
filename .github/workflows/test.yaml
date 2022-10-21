@@ -3,23 +3,24 @@ name: ci
 on: [push]
 
 jobs:
-  name: Tests in Huff
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v3
-      with:
-        submodules: recursive
-    - name: Install Foundry
-      uses: foundry-rs/foundry-toolchain@v1
-      with:
-        version: nightly
-    - name: Install Huff
-      uses: huff-language/huff-toolchain@v2
-      with:
-        version: nightly
-    - name: Huff Tests
-      uses: huff-language/huff-tests@v3.0.0
-      with:
-        with-location: "tests" # defaults to "src"
-        with-extension: "*.t.huff" # default
-        with-format: "table" # default, either ["list", "table", "json"]
+  tests:
+    name: Tests in Huff
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+      - name: Install Huff
+        uses: huff-language/huff-toolchain@v2
+        with:
+          version: nightly
+      - name: Huff Tests
+        uses: huff-language/huff-tests@v3.0.0
+        with:
+          with-location: "tests" # defaults to "src"
+          with-extension: "*.t.huff" # default
+          with-format: "table" # default, either ["list", "table", "json"]
