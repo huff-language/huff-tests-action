@@ -1,0 +1,54 @@
+/// @title Test
+/// @author asnared <https://github.com/abigger87>
+/// @notice Example huff tests
+
+
+/// @notice Returns an incorrect sum
+#define macro BAD_SUM() = takes (2) returns (1) {
+  // Input Stack:       [a, b]
+  sub                // [sub]
+}
+
+
+/// @notice The example summing macro
+#define macro SUM() = takes (2) returns (1) {
+  // Input Stack:       [a, b]
+  add                // [sum]
+}
+
+/// @notice Helper macro to test two values are equal
+#define macro TEST_ASSERT_EQ() = {
+    eq continue jumpi
+    0x00 dup1 revert
+    continue:
+}
+
+/// @notice Tests adding numbers
+#define test TEST_SUM() = {
+  0x01                 // [1]
+  0x01                 // [1, 1]
+  SUM()                // [sum]
+  0x02                 // [2, sum]
+  TEST_ASSERT_EQ()
+  continue jump
+
+  fail:
+    0x00 dup1 revert
+  continue:
+}
+
+/// @notice Tests bad summation of numbers
+#define test FAIL_TEST_BAD_SUM() = {
+  0x01                 // [1]
+  0x01                 // [1, 1]
+  BAD_SUM()                // [sum]
+  0x02                 // [2, sum]
+  TEST_ASSERT_EQ()
+  continue jump
+
+  // We should fail 
+  fail:
+    0x00 dup1 revert
+  continue:
+}
+
