@@ -14,7 +14,7 @@ inputs:
     description: "The format of your huff test output"
     required: false
 
-name: "Huff Tests"
+name: "Huff Testing"
 runs:
   steps:
     - uses: actions/checkout@v3
