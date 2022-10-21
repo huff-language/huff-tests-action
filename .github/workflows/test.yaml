@@ -19,7 +19,7 @@ jobs:
         with:
           version: nightly
       - name: Huff Tests
-        uses: huff-language/huff-tests-action@v3.0.0
+        uses: huff-language/huff-tests-action@v3
         with:
           with-location: "tests" # defaults to "src"
           with-extension: "*.t.huff" # default
