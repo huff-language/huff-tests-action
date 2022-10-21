@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Huff Tests
-        uses: huff-language/huff-tests-action@v2
+        uses: huff-language/huff-tests-action@v3
         with:
           # Below arguments are optional:
           with-location: "tests" # Defaults to "src"
