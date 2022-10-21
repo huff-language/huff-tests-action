@@ -1,14 +1,14 @@
-# Huff Tests Github Action
+## Huff Tests Github Action
 
 Github Action that:
 
 1. Checks out your local repository
 2. Installs huffc
-3. Runs Huff tests on any files named \*.t.huff
+3. Runs Huff tests on any files that match the default or specified parameters:
 
-Optionally:
-
-- Install Foundry and run Forge tests if the `with-forge-tests` option is set to true
+- 1. Named `*.t.huff` or the specified extension
+- 2. Located in `src` or the specified directory
+- 3. With the specified output or `list`
 
 ## Example Workflow
 
@@ -25,17 +25,19 @@ jobs:
       - name: Run Huff Tests
         uses: huff-language/huff-tests-action@v2
         with:
-          # Optional
-          with-forge-tests: false
-          test-extension: ".t.huff"
+          # Below arguments are optional:
+          with-location: "tests" # Defaults to "src"
+          with-extension: "*.t.huff" # Defaults to "*.t.huff*"
+          with-format: "table" # Defaults to "list"
 ```
 
 ## Inputs
 
-| **Name**           | **Required** | **Description**                                                         | **Type** |
-| ------------------ | ------------ | ----------------------------------------------------------------------- | -------- |
-| `test-extension`   | False        | The extension of your huff tests, e.g. `t.huff` or `.poggers.huff`.     | string   |
-| `with-forge-tests` | False        | Installs foundry and runs `forge test -vvv` along side your huff tests. | boolean  |
+| **Name**         | **Required** | **Description**                                                        | **Type** |
+| ---------------- | ------------ | ---------------------------------------------------------------------- | -------- |
+| `with-extension` | False        | The extension of your huff tests, e.g. `t.huff` or `.poggers.huff`.    | string   |
+| `with-location`  | False        | The location of your huff test files, e.g. `src` or `contracts`        | string   |
+| `with-format`    | False        | The format of your huff test output. One of ["list", "table", "json"]. | string   |
 
 ## Contributing
 
